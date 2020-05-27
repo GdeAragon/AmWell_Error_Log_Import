@@ -1,0 +1,1980 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/22/2020 10:22:27 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="CEDENINV-ITS779"
+  DTS:CreatorName="CENTURA\gdearag2"
+  DTS:Description="SSIS Package Description"
+  DTS:DTSID="{52BC7516-81A4-4EFF-B450-6E62A81182EC}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.1900.73"
+  DTS:LocaleID="1033"
+  DTS:MaxErrorCount="0"
+  DTS:ObjectName="AmWell_ERRORS_Raw_Data_IMPORT"
+  DTS:VersionBuild="11"
+  DTS:VersionGUID="{F369AA3D-178B-4541-870F-E6490FE929A1}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[AMWELL_DB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{1E4D40D5-0324-4617-9EA5-37C5F9892AE0}"
+      DTS:ObjectName="AMWELL_DB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=CEDINVSQ157,8072;Initial Catalog=AMWELL;Provider=SQLOLEDB.1;Integrated Security=SSPI;Auto Translate=false;Application Name=SSIS-AmWell_ERRORS_Raw_Data_IMPORT-{1E4D40D5-0324-4617-9EA5-37C5F9892AE0}DestinationConnectionOLEDB;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SourceConnectionFlatFile]"
+      DTS:CreationName="FLATFILE"
+      DTS:DelayValidation="True"
+      DTS:DTSID="{2CF58A3F-282F-4146-B4AC-F59A3799C0C6}"
+      DTS:ObjectName="SourceConnectionFlatFile">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::PathToFile] +  @[User::FileName]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="\\ceinvfs03s\Shared\BIDataFiles\AmWell\AmWell_Errors_IN\AmWellErrors_20200427.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="255"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Date"
+              DTS:DTSID="{44DABF72-02A7-42C1-A9D0-6065A91F198A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="255"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Time"
+              DTS:DTSID="{3BA119E6-4917-45AA-A4EE-105BCC228A7A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="255"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Pt Last Name"
+              DTS:DTSID="{E18C15A1-9789-4E94-BE89-F2963952B028}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="255"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Pt First Name"
+              DTS:DTSID="{308280DC-2511-4419-8F58-5ED1D0BDE873}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="255"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Pt DOB"
+              DTS:DTSID="{4D1C44E5-9444-4218-86C2-062D84A797AB}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="255"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Pt Gender"
+              DTS:DTSID="{7A70A4C6-CF4B-491B-B41F-1F0FF7B90672}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="255"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Appt Date"
+              DTS:DTSID="{C821204E-A31F-40C6-9DCC-9D7D90052E75}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="255"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Appt Time"
+              DTS:DTSID="{41EF1899-EA7B-4DB6-BB40-FBBE3A898852}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="255"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Appt Location"
+              DTS:DTSID="{64B1672B-E37E-4EC2-A59E-16BAFB15CF61}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="255"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Appt Type"
+              DTS:DTSID="{260F8CAD-D329-43F5-BC70-8EDE8A73BD2B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="255"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Appt Action"
+              DTS:DTSID="{CABA43CE-9846-46B5-AA0F-204BC50A2F61}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="255"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Prov Last Name"
+              DTS:DTSID="{EBA537C9-69A2-404B-825D-11644DE82B19}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="255"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Prov First Name"
+              DTS:DTSID="{C6168255-A848-4A68-8C53-255D2D15FBE1}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="255"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Prov Type"
+              DTS:DTSID="{D4AA5090-EC28-4774-964E-BBCF8E95F41D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="255"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Prov ID"
+              DTS:DTSID="{68E61C17-40BA-44E2-89E9-4340592D7A7F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="255"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Entered by Last Name"
+              DTS:DTSID="{75E1353E-68D3-4AC3-83C7-29AD6E958755}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="255"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Entered By First Name"
+              DTS:DTSID="{D6365DFE-6DF8-445C-98F9-1407CD9BB86F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="5000"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Error Message"
+              DTS:DTSID="{008A44C7-93B4-444B-A4E9-BA2D34DB2558}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{DA36C281-1B81-4CC2-A3C8-7039AB88CD37}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="DestPath">
+      <DTS:VariableValue
+        DTS:DataType="8">\\ceinvfs03s\Shared\BIDataFiles\AmWell\AmWell_Errors_ARCHIVE\</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{F5C59F96-D6CA-4001-ACA9-74F0C759F076}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FileName">
+      <DTS:VariableValue
+        DTS:DataType="8">AmWellErrors_20200427.csv</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{2DEFC0EA-C520-47C2-9DC6-CFA44A3E5592}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="HasFileBeenProcessed">
+      <DTS:VariableValue
+        DTS:DataType="11">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{A649B00A-3333-472E-B9E6-4B81C46F80AB}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="PathToFile">
+      <DTS:VariableValue
+        DTS:DataType="8">\\ceinvfs03s\Shared\BIDataFiles\AmWell\AmWell_Errors_IN\</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Foreach Loop Container"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:DTSID="{C2453632-6E8E-4B6D-AD33-D5DE5C24AB7D}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Foreach Loop Container">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachFileEnumerator"
+        DTS:DTSID="{9E0BA764-08A2-429D-A465-1020E4C9F58F}"
+        DTS:ObjectName="{9E0BA764-08A2-429D-A465-1020E4C9F58F}">
+        <DTS:PropertyExpression
+          DTS:Name="Directory">@[User::PathToFile]</DTS:PropertyExpression>
+        <DTS:ObjectData>
+          <ForEachFileEnumeratorProperties>
+            <FEFEProperty
+              Folder="\\ceinvfs03s\Shared\BIDataFiles\AmWell\AmWell_Errors_IN\" />
+            <FEFEProperty
+              FileSpec="*.csv" />
+            <FEFEProperty
+              FileNameRetrievalType="1" />
+            <FEFEProperty
+              Recurse="0" />
+          </ForEachFileEnumeratorProperties>
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\Archive"
+          DTS:CreationName="STOCK:SEQUENCE"
+          DTS:Description="Sequence Container"
+          DTS:DTSID="{45FB510B-80A5-4D69-98B5-3C39FB184B23}"
+          DTS:ExecutableType="STOCK:SEQUENCE"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Archive">
+          <DTS:Variables />
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\Foreach Loop Container\Archive\Move File to Archive"
+              DTS:CreationName="Microsoft.FileSystemTask"
+              DTS:Description="File System Task"
+              DTS:DTSID="{3E42D93E-6195-4581-8D4D-DBDAD840263C}"
+              DTS:ExecutableType="Microsoft.FileSystemTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Move File to Archive"
+              DTS:ThreadHint="0">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <FileSystemData
+                  TaskOperationType="MoveFile"
+                  TaskOverwriteDestFile="True"
+                  TaskSourcePath="{2CF58A3F-282F-4146-B4AC-F59A3799C0C6}"
+                  TaskDestinationPath="User::DestPath"
+                  TaskIsDestinationVariable="True" />
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\Process File"
+          DTS:CreationName="STOCK:SEQUENCE"
+          DTS:Description="Sequence Container"
+          DTS:DTSID="{43850D9F-8177-4754-827D-F8B110DA7E28}"
+          DTS:ExecutableType="STOCK:SEQUENCE"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Process File">
+          <DTS:Variables />
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\Foreach Loop Container\Process File\Check if FIle has been processed"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{30FC01FD-72A7-4A30-B5FA-D086A1097E39}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Check if FIle has been processed"
+              DTS:ThreadHint="0">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{1E4D40D5-0324-4617-9EA5-37C5F9892AE0}"
+                  SQLTask:SqlStatementSource="EXEC dbo.usp_HasFileBeenProcessed @FileName = ?,&#xA;@HasFileBeenProcessed=? OUT" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="0"
+                    SQLTask:DtsVariableName="User::FileName"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="129"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="1"
+                    SQLTask:DtsVariableName="User::HasFileBeenProcessed"
+                    SQLTask:ParameterDirection="Output"
+                    SQLTask:DataType="11"
+                    SQLTask:ParameterSize="-1" />
+                </SQLTask:SqlTaskData>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Foreach Loop Container\Process File\EMPTY RAW Data Table"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:DTSID="{7F2EFA02-3929-4C95-8712-63F8C7ECE50A}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:FailPackageOnFailure="True"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="EMPTY RAW Data Table"
+              DTS:ThreadHint="0">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{1E4D40D5-0324-4617-9EA5-37C5F9892AE0}"
+                  SQLTask:SqlStatementSource="TRUNCATE TABLE [raw].[AmWellErrors];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Foreach Loop Container\Process File\EMPTY STG Data Table"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{4974DD1F-7AE4-43BB-BF1D-9D4C2142DC51}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="EMPTY STG Data Table"
+              DTS:ThreadHint="0">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{1E4D40D5-0324-4617-9EA5-37C5F9892AE0}"
+                  SQLTask:SqlStatementSource="TRUNCATE TABLE [stg].[AMWELL_ERRORS];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table"
+              DTS:CreationName="Microsoft.Pipeline"
+              DTS:DelayValidation="True"
+              DTS:DTSID="{CEBD1196-756B-4DDB-8DC6-9F310E6ED0F8}"
+              DTS:ExecutableType="Microsoft.Pipeline"
+              DTS:FailPackageOnFailure="True"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Import Data Into RAW table"
+              DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <pipeline
+                  defaultBufferSize="3145728"
+                  version="1">
+                  <components>
+                    <component
+                      refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Data Conversion"
+                      componentClassID="Microsoft.DataConvert"
+                      contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                      description="Data Conversion"
+                      name="Data Conversion"
+                      usesDispositions="true">
+                      <inputs>
+                        <input
+                          refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Data Conversion.Inputs[Data Conversion Input]"
+                          name="Data Conversion Input">
+                          <inputColumns>
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Data Conversion.Inputs[Data Conversion Input].Columns[FILE_NAME]"
+                              cachedDataType="wstr"
+                              cachedLength="25"
+                              cachedName="FILE_NAME"
+                              lineageId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Derived Column.Outputs[Derived Column Output].Columns[FILE_NAME]" />
+                          </inputColumns>
+                          <externalMetadataColumns />
+                        </input>
+                      </inputs>
+                      <outputs>
+                        <output
+                          refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Data Conversion.Outputs[Data Conversion Output]"
+                          exclusionGroup="1"
+                          name="Data Conversion Output"
+                          synchronousInputId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Data Conversion.Inputs[Data Conversion Input]">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of FILE_NAME]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              length="25"
+                              lineageId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of FILE_NAME]"
+                              name="Copy of FILE_NAME"
+                              truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.Int32"
+                                  description="Specifies the input column used as the source of data for the conversion."
+                                  name="SourceInputColumnLineageID">#{Package\Foreach Loop Container\Process File\Import Data Into RAW table\Derived Column.Outputs[Derived Column Output].Columns[FILE_NAME]}</property>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                                  name="FastParse">false</property>
+                              </properties>
+                            </outputColumn>
+                          </outputColumns>
+                          <externalMetadataColumns />
+                        </output>
+                        <output
+                          refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Data Conversion.Outputs[Data Conversion Error Output]"
+                          exclusionGroup="1"
+                          isErrorOut="true"
+                          name="Data Conversion Error Output"
+                          synchronousInputId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Data Conversion.Inputs[Data Conversion Input]">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                              name="ErrorCode"
+                              specialFlags="1" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                              name="ErrorColumn"
+                              specialFlags="2" />
+                          </outputColumns>
+                          <externalMetadataColumns />
+                        </output>
+                      </outputs>
+                    </component>
+                    <component
+                      refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Derived Column"
+                      componentClassID="Microsoft.DerivedColumn"
+                      contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                      description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                      name="Derived Column"
+                      usesDispositions="true">
+                      <inputs>
+                        <input
+                          refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Derived Column.Inputs[Derived Column Input]"
+                          description="Input to the Derived Column Transformation"
+                          name="Derived Column Input">
+                          <externalMetadataColumns />
+                        </input>
+                      </inputs>
+                      <outputs>
+                        <output
+                          refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Derived Column.Outputs[Derived Column Output]"
+                          description="Default Output of the Derived Column Transformation"
+                          exclusionGroup="1"
+                          name="Derived Column Output"
+                          synchronousInputId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Derived Column.Inputs[Derived Column Input]">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Derived Column.Outputs[Derived Column Output].Columns[FILE_NAME]"
+                              dataType="wstr"
+                              errorOrTruncationOperation="Computation"
+                              errorRowDisposition="FailComponent"
+                              length="25"
+                              lineageId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Derived Column.Outputs[Derived Column Output].Columns[FILE_NAME]"
+                              name="FILE_NAME"
+                              truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property
+                                  containsID="true"
+                                  dataType="System.String"
+                                  description="Derived Column Expression"
+                                  name="Expression">@[User::FileName]</property>
+                                <property
+                                  containsID="true"
+                                  dataType="System.String"
+                                  description="Derived Column Friendly Expression"
+                                  expressionType="Notify"
+                                  name="FriendlyExpression">@[User::FileName]</property>
+                              </properties>
+                            </outputColumn>
+                          </outputColumns>
+                          <externalMetadataColumns />
+                        </output>
+                        <output
+                          refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Derived Column.Outputs[Derived Column Error Output]"
+                          description="Error Output of the Derived Column Transformation"
+                          exclusionGroup="1"
+                          isErrorOut="true"
+                          name="Derived Column Error Output"
+                          synchronousInputId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Derived Column.Inputs[Derived Column Input]">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                              name="ErrorCode"
+                              specialFlags="1" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                              name="ErrorColumn"
+                              specialFlags="2" />
+                          </outputColumns>
+                          <externalMetadataColumns />
+                        </output>
+                      </outputs>
+                    </component>
+                    <component
+                      refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors"
+                      componentClassID="Microsoft.OLEDBDestination"
+                      contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                      description="OLE DB Destination"
+                      name="Destination - AmWellErrors"
+                      usesDispositions="true"
+                      validateExternalMetadata="False"
+                      version="4">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                          name="CommandTimeout">0</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the name of the database object used to open a rowset."
+                          name="OpenRowset">[raw].[AmWellErrors]</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the variable that contains the name of the database object used to open a rowset."
+                          name="OpenRowsetVariable"></property>
+                        <property
+                          dataType="System.String"
+                          description="The SQL command to be executed."
+                          name="SqlCommand"
+                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the column code page to use when code page information is unavailable from the data source."
+                          name="DefaultCodePage">1252</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Forces the use of the DefaultCodePage property value when describing character data."
+                          name="AlwaysUseDefaultCodePage">false</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the mode used to access the database."
+                          name="AccessMode"
+                          typeConverter="AccessMode">3</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                          name="FastLoadKeepIdentity">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                          name="FastLoadKeepNulls">false</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                          name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                          name="FastLoadMaxInsertCommitSize">2147483647</property>
+                      </properties>
+                      <connections>
+                        <connection
+                          refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Connections[OleDbConnection]"
+                          connectionManagerID="Package.ConnectionManagers[AMWELL_DB]"
+                          connectionManagerRefId="Package.ConnectionManagers[AMWELL_DB]"
+                          description="The OLE DB runtime connection used to access the database."
+                          name="OleDbConnection" />
+                      </connections>
+                      <inputs>
+                        <input
+                          refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Inputs[Destination Input]"
+                          errorOrTruncationOperation="Insert"
+                          errorRowDisposition="FailComponent"
+                          hasSideEffects="true"
+                          name="Destination Input">
+                          <inputColumns>
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Inputs[Destination Input].Columns[Date]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="255"
+                              cachedName="Date"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Inputs[Destination Input].ExternalColumns[Date]"
+                              lineageId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].Columns[Date]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Inputs[Destination Input].Columns[Time]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="255"
+                              cachedName="Time"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Inputs[Destination Input].ExternalColumns[Time]"
+                              lineageId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].Columns[Time]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Inputs[Destination Input].Columns[Pt Last Name]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="255"
+                              cachedName="Pt Last Name"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Inputs[Destination Input].ExternalColumns[Pt Last Name]"
+                              lineageId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].Columns[Pt Last Name]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Inputs[Destination Input].Columns[Pt First Name]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="255"
+                              cachedName="Pt First Name"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Inputs[Destination Input].ExternalColumns[Pt First Name]"
+                              lineageId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].Columns[Pt First Name]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Inputs[Destination Input].Columns[Pt DOB]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="255"
+                              cachedName="Pt DOB"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Inputs[Destination Input].ExternalColumns[Pt DOB]"
+                              lineageId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].Columns[Pt DOB]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Inputs[Destination Input].Columns[Pt Gender]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="255"
+                              cachedName="Pt Gender"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Inputs[Destination Input].ExternalColumns[Pt Gender]"
+                              lineageId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].Columns[Pt Gender]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Inputs[Destination Input].Columns[Appt Date]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="255"
+                              cachedName="Appt Date"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Inputs[Destination Input].ExternalColumns[Appt Date]"
+                              lineageId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].Columns[Appt Date]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Inputs[Destination Input].Columns[Appt Time]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="255"
+                              cachedName="Appt Time"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Inputs[Destination Input].ExternalColumns[Appt Time]"
+                              lineageId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].Columns[Appt Time]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Inputs[Destination Input].Columns[Appt Location]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="255"
+                              cachedName="Appt Location"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Inputs[Destination Input].ExternalColumns[Appt Location]"
+                              lineageId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].Columns[Appt Location]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Inputs[Destination Input].Columns[Appt Type]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="255"
+                              cachedName="Appt Type"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Inputs[Destination Input].ExternalColumns[Appt Type]"
+                              lineageId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].Columns[Appt Type]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Inputs[Destination Input].Columns[Appt Action]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="255"
+                              cachedName="Appt Action"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Inputs[Destination Input].ExternalColumns[Appt Action]"
+                              lineageId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].Columns[Appt Action]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Inputs[Destination Input].Columns[Prov Last Name]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="255"
+                              cachedName="Prov Last Name"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Inputs[Destination Input].ExternalColumns[Prov Last Name]"
+                              lineageId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].Columns[Prov Last Name]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Inputs[Destination Input].Columns[Prov First Name]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="255"
+                              cachedName="Prov First Name"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Inputs[Destination Input].ExternalColumns[Prov First Name]"
+                              lineageId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].Columns[Prov First Name]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Inputs[Destination Input].Columns[Prov Type]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="255"
+                              cachedName="Prov Type"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Inputs[Destination Input].ExternalColumns[Prov Type]"
+                              lineageId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].Columns[Prov Type]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Inputs[Destination Input].Columns[Prov ID]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="255"
+                              cachedName="Prov ID"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Inputs[Destination Input].ExternalColumns[Prov ID]"
+                              lineageId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].Columns[Prov ID]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Inputs[Destination Input].Columns[Entered by Last Name]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="255"
+                              cachedName="Entered by Last Name"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Inputs[Destination Input].ExternalColumns[Entered by Last Name]"
+                              lineageId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].Columns[Entered by Last Name]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Inputs[Destination Input].Columns[Entered By First Name]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="255"
+                              cachedName="Entered By First Name"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Inputs[Destination Input].ExternalColumns[Entered By First Name]"
+                              lineageId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].Columns[Entered By First Name]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Inputs[Destination Input].Columns[Error Message]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="5000"
+                              cachedName="Error Message"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Inputs[Destination Input].ExternalColumns[Error Message]"
+                              lineageId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].Columns[Error Message]" />
+                            <inputColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Inputs[Destination Input].Columns[Copy of FILE_NAME]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="25"
+                              cachedName="Copy of FILE_NAME"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Inputs[Destination Input].ExternalColumns[FILE_NAME]"
+                              lineageId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of FILE_NAME]" />
+                          </inputColumns>
+                          <externalMetadataColumns
+                            isUsed="True">
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Inputs[Destination Input].ExternalColumns[Date]"
+                              codePage="1252"
+                              dataType="str"
+                              length="255"
+                              name="Date" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Inputs[Destination Input].ExternalColumns[Time]"
+                              codePage="1252"
+                              dataType="str"
+                              length="255"
+                              name="Time" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Inputs[Destination Input].ExternalColumns[Pt Last Name]"
+                              codePage="1252"
+                              dataType="str"
+                              length="255"
+                              name="Pt Last Name" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Inputs[Destination Input].ExternalColumns[Pt First Name]"
+                              codePage="1252"
+                              dataType="str"
+                              length="255"
+                              name="Pt First Name" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Inputs[Destination Input].ExternalColumns[Pt DOB]"
+                              codePage="1252"
+                              dataType="str"
+                              length="255"
+                              name="Pt DOB" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Inputs[Destination Input].ExternalColumns[Pt Gender]"
+                              codePage="1252"
+                              dataType="str"
+                              length="255"
+                              name="Pt Gender" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Inputs[Destination Input].ExternalColumns[Appt Date]"
+                              codePage="1252"
+                              dataType="str"
+                              length="255"
+                              name="Appt Date" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Inputs[Destination Input].ExternalColumns[Appt Time]"
+                              codePage="1252"
+                              dataType="str"
+                              length="255"
+                              name="Appt Time" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Inputs[Destination Input].ExternalColumns[Appt Location]"
+                              codePage="1252"
+                              dataType="str"
+                              length="255"
+                              name="Appt Location" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Inputs[Destination Input].ExternalColumns[Appt Type]"
+                              codePage="1252"
+                              dataType="str"
+                              length="255"
+                              name="Appt Type" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Inputs[Destination Input].ExternalColumns[Appt Action]"
+                              codePage="1252"
+                              dataType="str"
+                              length="255"
+                              name="Appt Action" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Inputs[Destination Input].ExternalColumns[Prov Last Name]"
+                              codePage="1252"
+                              dataType="str"
+                              length="255"
+                              name="Prov Last Name" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Inputs[Destination Input].ExternalColumns[Prov First Name]"
+                              codePage="1252"
+                              dataType="str"
+                              length="255"
+                              name="Prov First Name" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Inputs[Destination Input].ExternalColumns[Prov Type]"
+                              codePage="1252"
+                              dataType="str"
+                              length="255"
+                              name="Prov Type" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Inputs[Destination Input].ExternalColumns[Prov ID]"
+                              codePage="1252"
+                              dataType="str"
+                              length="255"
+                              name="Prov ID" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Inputs[Destination Input].ExternalColumns[Entered by Last Name]"
+                              codePage="1252"
+                              dataType="str"
+                              length="255"
+                              name="Entered by Last Name" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Inputs[Destination Input].ExternalColumns[Entered By First Name]"
+                              codePage="1252"
+                              dataType="str"
+                              length="255"
+                              name="Entered By First Name" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Inputs[Destination Input].ExternalColumns[Error Message]"
+                              codePage="1252"
+                              dataType="str"
+                              length="5000"
+                              name="Error Message" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Inputs[Destination Input].ExternalColumns[FILE_NAME]"
+                              codePage="1252"
+                              dataType="str"
+                              length="255"
+                              name="FILE_NAME" />
+                          </externalMetadataColumns>
+                        </input>
+                      </inputs>
+                      <outputs>
+                        <output
+                          refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Outputs[OLE DB Destination Error Output]"
+                          exclusionGroup="1"
+                          isErrorOut="true"
+                          name="OLE DB Destination Error Output"
+                          synchronousInputId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Inputs[Destination Input]">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                              name="ErrorCode"
+                              specialFlags="1" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                              name="ErrorColumn"
+                              specialFlags="2" />
+                          </outputColumns>
+                          <externalMetadataColumns />
+                        </output>
+                      </outputs>
+                    </component>
+                    <component
+                      refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv"
+                      componentClassID="Microsoft.FlatFileSource"
+                      contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                      description="Flat File Source"
+                      localeId="1033"
+                      name="Source - AmWellErrors_csv"
+                      usesDispositions="true"
+                      version="1">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Specifies whether zero-length columns are treated as null."
+                          name="RetainNulls">false</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                          name="FileNameColumnName"></property>
+                      </properties>
+                      <connections>
+                        <connection
+                          refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Connections[FlatFileConnection]"
+                          connectionManagerID="Package.ConnectionManagers[SourceConnectionFlatFile]"
+                          connectionManagerRefId="Package.ConnectionManagers[SourceConnectionFlatFile]"
+                          name="FlatFileConnection" />
+                      </connections>
+                      <outputs>
+                        <output
+                          refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output]"
+                          name="Flat File Source Output">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].Columns[Date]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].ExternalColumns[Date]"
+                              length="255"
+                              lineageId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].Columns[Date]"
+                              name="Date"
+                              truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                                  name="FastParse">false</property>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the data is in binary format."
+                                  name="UseBinaryFormat">false</property>
+                              </properties>
+                            </outputColumn>
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].Columns[Time]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].ExternalColumns[Time]"
+                              length="255"
+                              lineageId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].Columns[Time]"
+                              name="Time"
+                              truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                                  name="FastParse">false</property>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the data is in binary format."
+                                  name="UseBinaryFormat">false</property>
+                              </properties>
+                            </outputColumn>
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].Columns[Pt Last Name]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].ExternalColumns[Pt Last Name]"
+                              length="255"
+                              lineageId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].Columns[Pt Last Name]"
+                              name="Pt Last Name"
+                              truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                                  name="FastParse">false</property>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the data is in binary format."
+                                  name="UseBinaryFormat">false</property>
+                              </properties>
+                            </outputColumn>
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].Columns[Pt First Name]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].ExternalColumns[Pt First Name]"
+                              length="255"
+                              lineageId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].Columns[Pt First Name]"
+                              name="Pt First Name"
+                              truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                                  name="FastParse">false</property>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the data is in binary format."
+                                  name="UseBinaryFormat">false</property>
+                              </properties>
+                            </outputColumn>
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].Columns[Pt DOB]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].ExternalColumns[Pt DOB]"
+                              length="255"
+                              lineageId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].Columns[Pt DOB]"
+                              name="Pt DOB"
+                              truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                                  name="FastParse">false</property>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the data is in binary format."
+                                  name="UseBinaryFormat">false</property>
+                              </properties>
+                            </outputColumn>
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].Columns[Pt Gender]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].ExternalColumns[Pt Gender]"
+                              length="255"
+                              lineageId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].Columns[Pt Gender]"
+                              name="Pt Gender"
+                              truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                                  name="FastParse">false</property>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the data is in binary format."
+                                  name="UseBinaryFormat">false</property>
+                              </properties>
+                            </outputColumn>
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].Columns[Appt Date]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].ExternalColumns[Appt Date]"
+                              length="255"
+                              lineageId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].Columns[Appt Date]"
+                              name="Appt Date"
+                              truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                                  name="FastParse">false</property>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the data is in binary format."
+                                  name="UseBinaryFormat">false</property>
+                              </properties>
+                            </outputColumn>
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].Columns[Appt Time]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].ExternalColumns[Appt Time]"
+                              length="255"
+                              lineageId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].Columns[Appt Time]"
+                              name="Appt Time"
+                              truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                                  name="FastParse">false</property>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the data is in binary format."
+                                  name="UseBinaryFormat">false</property>
+                              </properties>
+                            </outputColumn>
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].Columns[Appt Location]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].ExternalColumns[Appt Location]"
+                              length="255"
+                              lineageId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].Columns[Appt Location]"
+                              name="Appt Location"
+                              truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                                  name="FastParse">false</property>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the data is in binary format."
+                                  name="UseBinaryFormat">false</property>
+                              </properties>
+                            </outputColumn>
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].Columns[Appt Type]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].ExternalColumns[Appt Type]"
+                              length="255"
+                              lineageId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].Columns[Appt Type]"
+                              name="Appt Type"
+                              truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                                  name="FastParse">false</property>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the data is in binary format."
+                                  name="UseBinaryFormat">false</property>
+                              </properties>
+                            </outputColumn>
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].Columns[Appt Action]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].ExternalColumns[Appt Action]"
+                              length="255"
+                              lineageId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].Columns[Appt Action]"
+                              name="Appt Action"
+                              truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                                  name="FastParse">false</property>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the data is in binary format."
+                                  name="UseBinaryFormat">false</property>
+                              </properties>
+                            </outputColumn>
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].Columns[Prov Last Name]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].ExternalColumns[Prov Last Name]"
+                              length="255"
+                              lineageId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].Columns[Prov Last Name]"
+                              name="Prov Last Name"
+                              truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                                  name="FastParse">false</property>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the data is in binary format."
+                                  name="UseBinaryFormat">false</property>
+                              </properties>
+                            </outputColumn>
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].Columns[Prov First Name]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].ExternalColumns[Prov First Name]"
+                              length="255"
+                              lineageId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].Columns[Prov First Name]"
+                              name="Prov First Name"
+                              truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                                  name="FastParse">false</property>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the data is in binary format."
+                                  name="UseBinaryFormat">false</property>
+                              </properties>
+                            </outputColumn>
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].Columns[Prov Type]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].ExternalColumns[Prov Type]"
+                              length="255"
+                              lineageId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].Columns[Prov Type]"
+                              name="Prov Type"
+                              truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                                  name="FastParse">false</property>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the data is in binary format."
+                                  name="UseBinaryFormat">false</property>
+                              </properties>
+                            </outputColumn>
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].Columns[Prov ID]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].ExternalColumns[Prov ID]"
+                              length="255"
+                              lineageId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].Columns[Prov ID]"
+                              name="Prov ID"
+                              truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                                  name="FastParse">false</property>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the data is in binary format."
+                                  name="UseBinaryFormat">false</property>
+                              </properties>
+                            </outputColumn>
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].Columns[Entered by Last Name]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].ExternalColumns[Entered by Last Name]"
+                              length="255"
+                              lineageId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].Columns[Entered by Last Name]"
+                              name="Entered by Last Name"
+                              truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                                  name="FastParse">false</property>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the data is in binary format."
+                                  name="UseBinaryFormat">false</property>
+                              </properties>
+                            </outputColumn>
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].Columns[Entered By First Name]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].ExternalColumns[Entered By First Name]"
+                              length="255"
+                              lineageId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].Columns[Entered By First Name]"
+                              name="Entered By First Name"
+                              truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                                  name="FastParse">false</property>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the data is in binary format."
+                                  name="UseBinaryFormat">false</property>
+                              </properties>
+                            </outputColumn>
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].Columns[Error Message]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].ExternalColumns[Error Message]"
+                              length="5000"
+                              lineageId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].Columns[Error Message]"
+                              name="Error Message"
+                              truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                                  name="FastParse">false</property>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the data is in binary format."
+                                  name="UseBinaryFormat">false</property>
+                              </properties>
+                            </outputColumn>
+                          </outputColumns>
+                          <externalMetadataColumns
+                            isUsed="True">
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].ExternalColumns[Date]"
+                              codePage="1252"
+                              dataType="str"
+                              length="255"
+                              name="Date" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].ExternalColumns[Time]"
+                              codePage="1252"
+                              dataType="str"
+                              length="255"
+                              name="Time" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].ExternalColumns[Pt Last Name]"
+                              codePage="1252"
+                              dataType="str"
+                              length="255"
+                              name="Pt Last Name" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].ExternalColumns[Pt First Name]"
+                              codePage="1252"
+                              dataType="str"
+                              length="255"
+                              name="Pt First Name" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].ExternalColumns[Pt DOB]"
+                              codePage="1252"
+                              dataType="str"
+                              length="255"
+                              name="Pt DOB" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].ExternalColumns[Pt Gender]"
+                              codePage="1252"
+                              dataType="str"
+                              length="255"
+                              name="Pt Gender" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].ExternalColumns[Appt Date]"
+                              codePage="1252"
+                              dataType="str"
+                              length="255"
+                              name="Appt Date" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].ExternalColumns[Appt Time]"
+                              codePage="1252"
+                              dataType="str"
+                              length="255"
+                              name="Appt Time" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].ExternalColumns[Appt Location]"
+                              codePage="1252"
+                              dataType="str"
+                              length="255"
+                              name="Appt Location" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].ExternalColumns[Appt Type]"
+                              codePage="1252"
+                              dataType="str"
+                              length="255"
+                              name="Appt Type" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].ExternalColumns[Appt Action]"
+                              codePage="1252"
+                              dataType="str"
+                              length="255"
+                              name="Appt Action" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].ExternalColumns[Prov Last Name]"
+                              codePage="1252"
+                              dataType="str"
+                              length="255"
+                              name="Prov Last Name" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].ExternalColumns[Prov First Name]"
+                              codePage="1252"
+                              dataType="str"
+                              length="255"
+                              name="Prov First Name" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].ExternalColumns[Prov Type]"
+                              codePage="1252"
+                              dataType="str"
+                              length="255"
+                              name="Prov Type" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].ExternalColumns[Prov ID]"
+                              codePage="1252"
+                              dataType="str"
+                              length="255"
+                              name="Prov ID" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].ExternalColumns[Entered by Last Name]"
+                              codePage="1252"
+                              dataType="str"
+                              length="255"
+                              name="Entered by Last Name" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].ExternalColumns[Entered By First Name]"
+                              codePage="1252"
+                              dataType="str"
+                              length="255"
+                              name="Entered By First Name" />
+                            <externalMetadataColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output].ExternalColumns[Error Message]"
+                              codePage="1252"
+                              dataType="str"
+                              length="5000"
+                              name="Error Message" />
+                          </externalMetadataColumns>
+                        </output>
+                        <output
+                          refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Error Output]"
+                          isErrorOut="true"
+                          name="Flat File Source Error Output">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                              codePage="1252"
+                              dataType="text"
+                              description="Flat File Source Error Output Column"
+                              lineageId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                              name="Flat File Source Error Output Column" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                              name="ErrorCode"
+                              specialFlags="1" />
+                            <outputColumn
+                              refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                              dataType="i4"
+                              lineageId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                              name="ErrorColumn"
+                              specialFlags="2" />
+                          </outputColumns>
+                          <externalMetadataColumns />
+                        </output>
+                      </outputs>
+                    </component>
+                  </components>
+                  <paths>
+                    <path
+                      refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table.Paths[Data Conversion Output]"
+                      endId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors.Inputs[Destination Input]"
+                      name="Data Conversion Output"
+                      startId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Data Conversion.Outputs[Data Conversion Output]" />
+                    <path
+                      refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table.Paths[Derived Column Output]"
+                      endId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Data Conversion.Inputs[Data Conversion Input]"
+                      name="Derived Column Output"
+                      startId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Derived Column.Outputs[Derived Column Output]" />
+                    <path
+                      refId="Package\Foreach Loop Container\Process File\Import Data Into RAW table.Paths[Flat File Source Output]"
+                      endId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Derived Column.Inputs[Derived Column Input]"
+                      name="Flat File Source Output"
+                      startId="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv.Outputs[Flat File Source Output]" />
+                  </paths>
+                </pipeline>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Foreach Loop Container\Process File\INSERT Process Data"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{6EF4E2F8-66A5-44D9-88E3-D1A93F474152}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="INSERT Process Data"
+              DTS:ThreadHint="0">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{1E4D40D5-0324-4617-9EA5-37C5F9892AE0}"
+                  SQLTask:SqlStatementSource="INSERT INTO amwell.FILE_PROCESS_HISTORY (FILE_NAME)&#xA;VALUES(?)" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="0"
+                    SQLTask:DtsVariableName="User::FileName"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="129"
+                    SQLTask:ParameterSize="-1" />
+                </SQLTask:SqlTaskData>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Foreach Loop Container\Process File\usp_amwell_AMWELL_ERRORS_INSERT"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{893A8479-54EE-4E53-9152-3073689110AA}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="usp_amwell_AMWELL_ERRORS_INSERT"
+              DTS:ThreadHint="0">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{1E4D40D5-0324-4617-9EA5-37C5F9892AE0}"
+                  SQLTask:SqlStatementSource="EXEC usp_amwell_AMWELL_ERRORS_INSERT;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Foreach Loop Container\Process File\usp_stg_AMWELL_ERRORS_INSERT"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{34FCFFF4-404D-4B83-A433-25D88E7A124D}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="usp_stg_AMWELL_ERRORS_INSERT"
+              DTS:ThreadHint="0">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{1E4D40D5-0324-4617-9EA5-37C5F9892AE0}"
+                  SQLTask:SqlStatementSource="EXEC usp_stg_AMWELL_ERRORS_INSERT;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+          <DTS:PrecedenceConstraints>
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\Foreach Loop Container\Process File.PrecedenceConstraints[Constraint]"
+              DTS:CreationName=""
+              DTS:DTSID="{EFD12EE6-3602-4A5D-857B-237E534A49F7}"
+              DTS:From="Package\Foreach Loop Container\Process File\Import Data Into RAW table"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint"
+              DTS:To="Package\Foreach Loop Container\Process File\usp_stg_AMWELL_ERRORS_INSERT" />
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\Foreach Loop Container\Process File.PrecedenceConstraints[Constraint 1]"
+              DTS:CreationName=""
+              DTS:DTSID="{5233BA6B-0D99-435A-8D36-EBBB0DD7A701}"
+              DTS:From="Package\Foreach Loop Container\Process File\usp_stg_AMWELL_ERRORS_INSERT"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint 1"
+              DTS:To="Package\Foreach Loop Container\Process File\usp_amwell_AMWELL_ERRORS_INSERT" />
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\Foreach Loop Container\Process File.PrecedenceConstraints[Constraint 2]"
+              DTS:CreationName=""
+              DTS:Description="Load rows from file only if the file has never been processed"
+              DTS:DTSID="{22262046-AE38-42D7-8D8D-8C87504D7408}"
+              DTS:EvalOp="1"
+              DTS:Expression="@[User::HasFileBeenProcessed] == FALSE"
+              DTS:From="Package\Foreach Loop Container\Process File\Check if FIle has been processed"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint 2"
+              DTS:To="Package\Foreach Loop Container\Process File\EMPTY RAW Data Table" />
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\Foreach Loop Container\Process File.PrecedenceConstraints[Constraint 3]"
+              DTS:CreationName=""
+              DTS:DTSID="{9AD9DBEE-71B5-4DE1-B680-91F182A13B38}"
+              DTS:From="Package\Foreach Loop Container\Process File\usp_amwell_AMWELL_ERRORS_INSERT"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint 3"
+              DTS:To="Package\Foreach Loop Container\Process File\INSERT Process Data" />
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\Foreach Loop Container\Process File.PrecedenceConstraints[Constraint 4]"
+              DTS:CreationName=""
+              DTS:DTSID="{9A24E591-2B19-4D12-895E-D2B3646C426C}"
+              DTS:From="Package\Foreach Loop Container\Process File\EMPTY RAW Data Table"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint 4"
+              DTS:To="Package\Foreach Loop Container\Process File\EMPTY STG Data Table" />
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\Foreach Loop Container\Process File.PrecedenceConstraints[Constraint 5]"
+              DTS:CreationName=""
+              DTS:DTSID="{1DEFD1BE-C539-4203-94DB-7EC5060AEEFD}"
+              DTS:From="Package\Foreach Loop Container\Process File\EMPTY STG Data Table"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint 5"
+              DTS:To="Package\Foreach Loop Container\Process File\Import Data Into RAW table" />
+          </DTS:PrecedenceConstraints>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{5F476B01-F017-43A0-8350-E869F0DA3C00}"
+          DTS:From="Package\Foreach Loop Container\Process File"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Foreach Loop Container\Archive"
+          DTS:Value="2" />
+      </DTS:PrecedenceConstraints>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{75BA45BB-711B-447B-96B8-6ADCA76012FB}"
+          DTS:ObjectName="{75BA45BB-711B-447B-96B8-6ADCA76012FB}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::FileName" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Foreach Loop Container\Archive\Move File to Archive"
+          TopLeft="5.5,5.5" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="174,102"
+          Size="174,146"
+          Id="Package\Foreach Loop Container\Archive"
+          TopLeft="68.5000000000002,823.5" />
+        <NodeLayout
+          Size="242,42"
+          Id="Package\Foreach Loop Container\Process File\Check if FIle has been processed"
+          TopLeft="29,5.5" />
+        <NodeLayout
+          Size="213,42"
+          Id="Package\Foreach Loop Container\Process File\Import Data Into RAW table"
+          TopLeft="43.5,311.5" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\Process File.PrecedenceConstraints[Constraint]"
+          TopLeft="150,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="270,42"
+          Id="Package\Foreach Loop Container\Process File\usp_stg_AMWELL_ERRORS_INSERT"
+          TopLeft="15.0000000000001,413.5" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\Process File.PrecedenceConstraints[Constraint 1]"
+          TopLeft="150,455.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="289,42"
+          Id="Package\Foreach Loop Container\Process File\usp_amwell_AMWELL_ERRORS_INSERT"
+          TopLeft="5.50000000000006,515.5" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\Process File.PrecedenceConstraints[Constraint 3]"
+          TopLeft="150,557.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="188,42"
+          Id="Package\Foreach Loop Container\Process File\INSERT Process Data"
+          TopLeft="56.0000000000001,617.5" />
+        <NodeLayout
+          Size="202,42"
+          Id="Package\Foreach Loop Container\Process File\EMPTY RAW Data Table"
+          TopLeft="49,107.5" />
+        <NodeLayout
+          Size="199,42"
+          Id="Package\Foreach Loop Container\Process File\EMPTY STG Data Table"
+          TopLeft="50.5,209.5" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\Process File.PrecedenceConstraints[Constraint 2]"
+          TopLeft="150,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-142.591640625,18.25,285.18328125,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\Process File.PrecedenceConstraints[Constraint 4]"
+          TopLeft="150,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\Process File.PrecedenceConstraints[Constraint 5]"
+          TopLeft="150,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="300,714"
+          Size="300,758"
+          Id="Package\Foreach Loop Container\Process File"
+          TopLeft="5.50000000000009,5.5" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint]"
+          TopLeft="155.5,763.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-25.304453125,20.4453125,50.60890625,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="311,1024"
+          Size="311,1068"
+          Id="Package\Foreach Loop Container"
+          TopLeft="5.50000000000014,5.5" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Foreach Loop Container\Process File\Import Data Into RAW table">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="214,42"
+          Id="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Source - AmWellErrors_csv"
+          TopLeft="5.5,5.5" />
+        <NodeLayout
+          Size="212,42"
+          Id="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors"
+          TopLeft="6.50000000000003,311.5" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Derived Column"
+          TopLeft="33.5,107.5" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\Process File\Import Data Into RAW table.Paths[Flat File Source Output]"
+          TopLeft="112.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="161,42"
+          Id="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Data Conversion"
+          TopLeft="32,209.5" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\Process File\Import Data Into RAW table.Paths[Derived Column Output]"
+          TopLeft="112.5,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\Process File\Import Data Into RAW table.Paths[Data Conversion Output]"
+          TopLeft="112.5,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Foreach Loop Container\Process File\Import Data Into RAW table\Destination - AmWellErrors">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PrecedenceConstraint
+    design-time-name="Package\Foreach Loop Container\Process File.PrecedenceConstraints[Constraint 2]">
+    <ShowAnnotation>ConstraintDescription</ShowAnnotation>
+  </PrecedenceConstraint>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
